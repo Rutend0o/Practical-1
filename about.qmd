@@ -5,8 +5,7 @@ title: "Cars regression"
 
 
 ```{r}
-
-#| echo: false 
+#| include: false
 data(cars)
 
 ```
