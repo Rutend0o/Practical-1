@@ -1,5 +1,6 @@
 project:
   type: website
+ 
 
 website:
   title: "Practical 1"
@@ -8,10 +9,15 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
+    sidebar: "docked"
+        
 
 format:
   html:
-    theme: cosmo
+    theme: journal
+    mainfont: arial
+    fontcolor: "#938d93"
+    linkcolor: "#992597"
     css: styles.css
     toc: true
 
