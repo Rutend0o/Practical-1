@@ -13,6 +13,7 @@ data(cars)
 
 ## Regression analysis using Matrix method
 
+
 ```{r}
 #| echo: false
 X<- cbind(1,cars$speed)
@@ -22,29 +23,68 @@ Y<-cars$dist
 ```
 
 ```{r}
-#| echo: false
+#| include: false
 X_transpose<-t(X)
+X_transpose
 
 
 ```
+
+
+
+
+
 
 ```{r}
 #| echo: false
-bhat<-solve(X_transpose%*%X) %*% X_transpose%*%Y
+f<- function(X,Y)
+{bhat<-solve(X_transpose%*%X) %*% X_transpose%*%Y
 bhat
-```
+Yhat<-X%*%bhat
+Cmat <- solve(X_transpose%*%X)
+Cmat
+#k=p+1 where p=ncol of X
+k <- 1+1
+k
+rss <- t(Y-X%*%bhat)%*%(Y-X%*%bhat)
+rss
+s2 <- as.numeric(rss)/(nrow(X)-k)
+s2
+#find diagonals of the C matrix 
+c1 <- diag(Cmat)
+c1
+std.error <- sqrt(s2*c1)
+std.error
 
-``` r
+return(list('coefficients'= bhat, 'std_error'=std.error))}
+```
+The estimated regression coefficients are given by $\hat{\beta}$ 
+
+$$\hat{\beta} = (X^TX)^{-1}X^TY$$
+
+
+
+```{r}
+#| echo: false
+b<-f(X,Y)
+b
 ```
 
 ## Regression analysis using lm()
+Now using R lm() to get the coefficients.
 
 ```{r}
 #| echo: false 
 model1<-lm(dist~speed, data=cars)
-model1
+summary(model1)
+```
+## Comparing coefficients 
+
+```{r}
+all.equal(as.numeric(b$coefficients), as.numeric(model1$coefficients))
+
 ```
 
-## Results
+## Conclusion 
 
 The coefficient estimates produced by the two methods are the same.
