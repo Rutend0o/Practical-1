@@ -2,3 +2,26 @@
 title: "prac3"
 editor: visual
 ---
+
+```{r}
+#| echo: false
+library(tidyverse)
+library(nycflights13)
+library(tibble)
+```
+
+Question 1
+
+```{r}
+#| echo: false
+flights<- as_tibble(flights)
+print(flights)
+```
+
+Question 2
+
+```{r}
+dist_tbl1<-flights|> filter(month==1)|>distinct(carrier)|>group_by(carrier)|> summarise(dist_mean = mean(distance, na.rm = TRUE),dist_sd= sd(distance,na.rm=TRUE) 
+)|> arrange(dist_mean)
+
+```
