@@ -10,7 +10,7 @@ airquality
 ```
 
 
-## Airquality Data Exploration
+# Airquality Data Exploration
 
 ### Missing Values
 
@@ -64,9 +64,9 @@ OzoneStats
 data(cars)
 
 ```
-## Cars Regression
+# Cars Regression
 
-### Regression analysis using Matrix method
+## Regression analysis using Matrix method
 
 
 ```{r}
