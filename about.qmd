@@ -1,7 +1,62 @@
 ---
-title: "Cars regression"
+title: "Practical 1"
 ---
 
+```{r}
+#| include: false
+data(airquality)
+airquality
+
+```
+
+
+# Airquality Data Exploration
+
+### Missing Values
+
+```{r}
+#| echo: false 
+missingvalues<- airquality[!complete.cases(airquality), ]
+missingvalues
+
+```
+
+
+```{r}
+#| echo: false 
+Temperature<- airquality$Temp
+Ozonelevel <- airquality$Ozone
+
+
+```
+
+## Summary statistics
+
+### Temperature statistics
+```{r}
+#| echo: false
+tempmean <-mean(Temperature, na.rm=TRUE)
+tempsd <- sd(Temperature, na.rm=TRUE)
+tempmin<- min(Temperature, na.rm=TRUE)
+tempmax<- max(Temperature, na.rm=TRUE)
+TempStats<-c(tempmean, tempsd, tempmin,tempmax)
+TempStats
+
+```
+
+
+
+
+### Ozone level statistics
+```{r}
+#| echo: false
+Ozonemean <-mean(Ozonelevel, na.rm=TRUE)
+Ozonesd <- sd(Ozonelevel, na.rm=TRUE)
+Ozonemin<- min(Ozonelevel, na.rm=TRUE)
+Ozonemax<- max(Ozonelevel, na.rm=TRUE)
+OzoneStats<-c(Ozonemean, Ozonesd, Ozonemin,Ozonemax)
+OzoneStats 
+```
 
 
 ```{r}
@@ -9,7 +64,7 @@ title: "Cars regression"
 data(cars)
 
 ```
-# Regression
+# Cars Regression
 
 ## Regression analysis using Matrix method
 
