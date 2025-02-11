@@ -30,8 +30,8 @@ dist_tbl1
 
 Question 3
 
-The sd is Na for one carrier OO \<- there is only one flight of that carrier therefore n= 1 and for sd the denominator is n-1 =0 therefore undefined. 0 for AS, F9 and HA because there's is no variation of the distance.
-q3
+The sd is Na for one carrier OO \<- there is only one flight of that carrier therefore n= 1 and for sd the denominator is n-1 =0 therefore undefined. 0 for AS, F9 and HA because there's is no variation of the distance. q3
+
 ```{r}
 #create a sample flight dataset 
 carrier3<- c("OO","AS","AS","HA","HA","HA")
@@ -55,7 +55,6 @@ UtilsDataRSV::view_cols(flights)
 ```{r}
 sum(is.na(flights$distance))
 ```
-
 
 Question 4
 
@@ -86,8 +85,6 @@ routes<-flights |>
   summarise(airlinesflying = n_distinct(carrier), .groups = "drop") |> filter(airlinesflying > 1) 
 routes
 ```
-
-
 
 2
 
