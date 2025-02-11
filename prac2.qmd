@@ -1,16 +1,18 @@
 ---
-title: "prac2"
+title: "Lowess Practical"
 editor: visual
 ---
+## Question 1
 
 ```{r}
+# Generate simulated data 
 set.seed(1)
   n<-100
 x<-seq(1:n)
-x
+head(x)
 ei<-rnorm(length(x),mean=0,sd=0.2)
 y<- sin(x/10)+ei
-y
+head(y)
 df7<-data.frame(x,y)
 
 customLowess<-function(x,y,f){
@@ -22,9 +24,7 @@ customLowess<-function(x,y,f){
     neighbors<-order(distLowess)[1:k]
     Dmax<-max(distLowess[neighbors])
     neighbor_weight <- (1 - (distLowess[neighbors] / Dmax)^3)^3
-     # fitting regression
-    #neighbor_weight[distLowess[neighbors] >= Dmax] <- 0  
-    #weighted regression 
+      #fitting regression 
     X7<- cbind(1,x[neighbors] )
     X7
     W7<-diag(neighbor_weight)
@@ -38,22 +38,18 @@ customLowess<-function(x,y,f){
   smooth_values
 }
 
-plot(df7$x, df7$y)
+plot(df7$x, df7$y, xlab="x", ylab = "y", main ="Lowess from first principles")
 
-lines(customLowess(df7$x,df7$y,0.3), col='brown')
-
-  
-  
-
+lines(customLowess(df7$x,df7$y,0.3), col='blue')
 
 ```
 
-Q2
+## Question 2
+Now using Lowess from R.
 
 ```{r}
 df7<-data.frame(x,y)
-df7
-plot(df7$x,df7$y) #Create scatterplot
+plot(df7$x,df7$y, xlab="x", ylab = "y", main = "R Lowess") #Create scatterplot
 lines(lowess(df7$x,df7$y,f=0.3), col='red')
 
 
