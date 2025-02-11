@@ -237,4 +237,4 @@ NA, 77, 80, 115, 85, 88, 109, NA, 71, 90, 94, 91, 87, 113, 93,
 UtilsDataRSV::view_cols(dataQ7)
 ```
 
-The glucose and height column has Na values. There's a typo in the disease status column ( "healthy"; "Healthy)
+The glucose and height column have Na values. There's a typo in the disease status column ( "healthy"; "Healthy)
