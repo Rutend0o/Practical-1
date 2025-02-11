@@ -33,6 +33,7 @@ customLowess<-function(x,y,f){
     bhat7<-solve(t(X7)%*%W7%*%X7) %*% (t(X7)%*%W7%*%Y)
     bhat7
     smooth_values[i] <- bhat7[1] + bhat7[2] * x[i]
+  
   }
   smooth_values
 }
