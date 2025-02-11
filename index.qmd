@@ -1,7 +1,6 @@
 ---
-title: "Stats Comp Practical Assignments"
+title: "Statistical Computing Practical Assignment 1"
 ---
-
 
 
 
