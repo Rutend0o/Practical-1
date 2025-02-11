@@ -19,21 +19,27 @@ flights<- as_tibble(flights)
 print(flights)
 ```
 
-Question 2 wrong
+Question 2 done
 
 ```{r}
-dist_tbl1<- flights|>filter(month ==1)|>distinct(carrier)|>group_by(carrier)|>summarise(dist_mean = mean(distance, na.rm=TRUE), dist_sd= sd(distance, na.rm=TRUE)
+dist_tbl1<- flights|>filter(month ==1)|>group_by(carrier)|>summarise(dist_mean = mean(distance, na.rm=TRUE), dist_sd= sd(distance, na.rm=TRUE)
 )|>arrange(dist_mean)
+dist_tbl1
 
 ```
 
-q2wroooong
+Question 3
 
+The sd is Na for one carrier OO \<- there is only one flight of that carrier therefore n= 1 and for sd the denominator is n-1 =0 therefore undefined. 0 for AS, F9 and HA because there's is no variation of the distance.
+q3
 ```{r}
-dist_tbl1<- flights|>filter(month ==1)|>distinct(carrier)|>group_by(carrier)
-ungroup() 
-dist_tbl1|>summarise(dist_mean = mean(distance, na.rm=TRUE), dist_sd= sd(distance, na.rm=TRUE),.groups="drop"
-)|>arrange(dist_mean)
+#create a sample flight dataset 
+carrier3<- c("OO","AS","AS","HA","HA","HA")
+distance3 <-c(733, 2402,2402, 4983, 4983, 4983)# oo should have sd Na since its only one and the HA and AS should have 0 since the distances for each carrier are the same.
+distq3<-tibble(fcarrier=carrier3, fdistance=distance3)
+distq3
+distq3|> group_by(fcarrier)|> summarise(dist3mean=mean(fdistance), dist3sd = sd (fdistance))
+
 ```
 
 ```{r}
@@ -50,7 +56,6 @@ UtilsDataRSV::view_cols(flights)
 sum(is.na(flights$distance))
 ```
 
-Question 3
 
 Question 4
 
@@ -73,11 +78,7 @@ summarise(proportion = sum(dep_delay > 0 & arr_delay <= 0, na.rm = TRUE) / nrow(
 
 Question 6
 
-```{r}
-colnames(airline)
-```
-
-1\.
+1
 
 ```{r}
 routes<-flights |> 
@@ -86,16 +87,9 @@ routes<-flights |>
 routes
 ```
 
-2.wrong
 
-```{r}
-flights |> 
-  group_by(origin, dest) |>              
-  summarise(airlinesflying = n_distinct(carrier)) |> filter(airlinesflying > 1)|>  
- group_by(origin, dest,carrier)|>summarise(ave_delay=mean(arr_delay, na.rm=TRUE))
-```
 
-2\.
+2
 
 ```{r}
 routes1 <- flights |> 
