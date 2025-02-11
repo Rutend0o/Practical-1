@@ -21,6 +21,8 @@ print(flights)
 
 # Question 2 
 
+-   Rewrite code using `dplyr` and the pipe
+
 ```{r}
 dist_tbl1<- flights|>filter(month ==1)|>group_by(carrier)|>summarise(dist_mean = mean(distance, na.rm=TRUE), dist_sd= sd(distance, na.rm=TRUE)
 )|>arrange(dist_mean)
@@ -119,6 +121,8 @@ max_diff <- diff_routes |> slice(1)
 max_diff
 
 ```
+
+JFK - ATL route has the greatest difference between the best and worst performing airlines.
 
 ## 6.5
 
