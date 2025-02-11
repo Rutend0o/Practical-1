@@ -8,9 +8,13 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
-    sidebar: "docked"
-        
+      - href: about.qmd
+        text: Prac1
+      - href: prac2.qmd
+        text: Prac2
+      - href: Prac3.qmd
+        text: Prac3
+    
 
 format:
   html:
@@ -20,6 +24,7 @@ format:
     linkcolor: "#992597"
     css: styles.css
     toc: true
+    toc-depth: 3
 
 
 
